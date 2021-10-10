@@ -1,3 +1,8 @@
-# change "YourPythonPath" to path in "which python" on your PC in script below
-# use backslash(\) to shield slash(/) in path
-sed -i 's/#!/c/Users/AngryBear/AppData/Local/Microsoft/WindowsApps/python/YourPythonPath/g' *py
+# HOW change PATH in all files.
+change "#!Your/Python/Path" to path "which python" on your PC in script below.
+
+```bash
+sed -i 's/#!\/c\/Users\/AngryBear\/AppData\/Local\/Microsoft\/WindowsApps\/python/#!Your\/Python\/Path/g' *py
+```
+
+then use it!
