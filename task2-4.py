@@ -2,6 +2,7 @@
 #Предположим, у нас есть access.log веб¬сервера. Нужно написать скрипт, который найдет десять IP-адресов, от которых было больше всего запросов. 
 import re
 import string
+import heapq
 
 frequency = { }
 #The first thing we want to do is to store the text file in a string variable.
@@ -14,12 +15,6 @@ for word in match_pattern:
     count = frequency.get(word,0)
     frequency[word] = count + 1
 
-frequency_list = frequency.keys()
-
-max_frequency = 0
-max_word = 0
-for word in frequency_list:
-    if frequency[word] > max_frequency:
-        max_frequency = frequency[word]
-        max_word = word
-print(max_word, max_frequency)
+max_IP = heapq.nlargest(10, frequency, key=frequency.get)
+for IP in max_IP:
+    print(frequency[IP], IP)
