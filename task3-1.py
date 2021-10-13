@@ -20,19 +20,27 @@
 
 import psutil
 import time 
-from datetime import datetime, date
+import json
+from datetime import datetime
+
 
 while True:
-    print('========SNAPSHOT========')
-    print("Date: "+str(date.today().year)+"-"+str(date.today().month)+"-"+str(date.today().day))
-    print("Time: "+str(datetime.today().hour)+":"+str(datetime.today().minute)+":"+str(datetime.today().second))
-    print('Overall CPU load:', psutil.cpu_percent(1))
-    print('Overall swap memory usage:')
-    print(psutil.swap_memory())
-    print('IO information:')
-    print(psutil.disk_io_counters())
-    print('Overall virtual memory usage:')
-    print(psutil.virtual_memory())
-    print('Network information:')
-    print(psutil.net_io_counters())
+    to_txt = 'TIMESTAMP {} CPU_LOAD {}% MEMORY_USAGE {}% SWAP {}%'  \
+        .format (
+        datetime.now(),
+        psutil.cpu_percent(interval=1, percpu=False),
+#    print(round(psutil.virtual_memory().total / (1024.0 ** 3)), 'Gb')
+#    print(round(psutil.virtual_memory().used / (1024.0 ** 3)), 'Gb')
+        psutil.virtual_memory().percent,
+#    print(round(psutil.swap_memory().total / (1024.0 ** 3)), 'Gb')
+#    print(round(psutil.swap_memory().used / (1024.0 ** 3)), 'Gb')
+        psutil.swap_memory().percent
+#    print('IO information:')
+#    print(psutil.disk_io_counters().read_count)
+#    print(psutil.disk_io_counters().write_count)
+#    print('Network information:')
+#    print(round(psutil.net_io_counters().bytes_sent / (1024.0 ** 3)), 'Gb')
+#    print(round(psutil.net_io_counters().bytes_recv / (1024.0 ** 3)), 'Gb')
+    )
+    print(to_txt)
     time.sleep(10)
