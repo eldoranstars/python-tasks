@@ -18,6 +18,8 @@
 #   interval = 5
 #   You can use any type of configs: ini files, yaml, json or even python settings.py.
 
+#https://pythonworld.ru/osnovy/formatirovanie-strok-metod-format.html
+#https://pythonworld.ru/moduli/modul-datetime.html
 import psutil
 import time 
 import json
@@ -26,25 +28,19 @@ from datetime import datetime
 with open("settings.json") as jsonfile:
     cfg = json.load(jsonfile)
 
-#https://pythonworld.ru/osnovy/formatirovanie-strok-metod-format.html
-#https://pythonworld.ru/moduli/modul-datetime.html
-if cfg["output"] == "txt":
+if cfg["output"] == "json":
+    print("there will be json")
+else:
     while True:
         to_txt = '{} CPU_LOAD {}% MEMORY_USAGE {}% SWAP {}% DISK_IO {}/{}' .format (
         datetime.now(),
         psutil.cpu_percent(interval=1, percpu=False),
-#    print(round(psutil.virtual_memory().total / (1024.0 ** 3)), 'Gb')
-#    print(round(psutil.virtual_memory().used / (1024.0 ** 3)), 'Gb')
         psutil.virtual_memory().percent,
-#    print(round(psutil.swap_memory().total / (1024.0 ** 3)), 'Gb')
-#    print(round(psutil.swap_memory().used / (1024.0 ** 3)), 'Gb')
         psutil.swap_memory().percent,
         round(psutil.disk_io_counters().read_count / 1024.0),
         round(psutil.disk_io_counters().write_count / 1024.0)
-#    print(round(psutil.net_io_counters().bytes_sent / (1024.0 ** 3)), 'Gb')
-#    print(round(psutil.net_io_counters().bytes_recv / (1024.0 ** 3)), 'Gb')
+#    print(round(psutil.net_io_counters().bytes_sent / (1024.0 ** 3)))
+#    print(round(psutil.net_io_counters().bytes_recv / (1024.0 ** 3)))
         )
         print(to_txt)
         time.sleep(int(cfg["interval"]))
-else:
-    print("there will be json")
