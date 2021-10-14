@@ -23,10 +23,14 @@ import time
 import json
 from datetime import datetime
 
+with open("settings.json") as jsonfile:
+    cfg = json.load(jsonfile)
 
-while True:
-    to_txt = 'TIMESTAMP {} CPU_LOAD {}% MEMORY_USAGE {}% SWAP {}%'  \
-        .format (
+#https://pythonworld.ru/osnovy/formatirovanie-strok-metod-format.html
+#https://pythonworld.ru/moduli/modul-datetime.html
+if cfg["output"] == "txt":
+    while True:
+        to_txt = '{} CPU_LOAD {}% MEMORY_USAGE {}% SWAP {}% DISK_IO {}/{}' .format (
         datetime.now(),
         psutil.cpu_percent(interval=1, percpu=False),
 #    print(round(psutil.virtual_memory().total / (1024.0 ** 3)), 'Gb')
@@ -34,13 +38,13 @@ while True:
         psutil.virtual_memory().percent,
 #    print(round(psutil.swap_memory().total / (1024.0 ** 3)), 'Gb')
 #    print(round(psutil.swap_memory().used / (1024.0 ** 3)), 'Gb')
-        psutil.swap_memory().percent
-#    print('IO information:')
-#    print(psutil.disk_io_counters().read_count)
-#    print(psutil.disk_io_counters().write_count)
-#    print('Network information:')
+        psutil.swap_memory().percent,
+        round(psutil.disk_io_counters().read_count / 1024.0),
+        round(psutil.disk_io_counters().write_count / 1024.0)
 #    print(round(psutil.net_io_counters().bytes_sent / (1024.0 ** 3)), 'Gb')
 #    print(round(psutil.net_io_counters().bytes_recv / (1024.0 ** 3)), 'Gb')
-    )
-    print(to_txt)
-    time.sleep(10)
+        )
+        print(to_txt)
+        time.sleep(int(cfg["interval"]))
+else:
+    print("there will be json")
