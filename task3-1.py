@@ -23,13 +23,14 @@
 import psutil
 import time 
 import json
+from settings import output, interval
 from datetime import datetime
 
-with open("settings.json") as jsonfile:
-    cfg = json.load(jsonfile)
 
-if cfg["output"] == "json":
-    print("there will be json")
+if output == "json":
+    while True:
+        print("there will be json")
+        time.sleep(interval)
 else:
     while True:
         to_txt = '{} CPU_LOAD {}% MEMORY_USAGE {}% SWAP {}% DISK_IO {}/{}' .format (
@@ -43,4 +44,4 @@ else:
 #    print(round(psutil.net_io_counters().bytes_recv / (1024.0 ** 3)))
         )
         print(to_txt)
-        time.sleep(int(cfg["interval"]))
+        time.sleep(interval)
