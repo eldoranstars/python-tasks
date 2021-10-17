@@ -26,7 +26,9 @@
 
 #https://www.w3schools.com/python/python_classes.asp
 #https://habr.com/ru/post/444338/
+#https://pythonworld.ru/osnovy/inkapsulyaciya-nasledovanie-polimorfizm.html
 
+# Класс Student с приватными и публичными атрибутами.
 class Student:
     def __init__(self, name, sname, dob, gender, grade, speciality, course ):
         self.name = name
@@ -58,5 +60,14 @@ class Student:
     def __print_course(self):
         print(self.course)
 
+# Создание двух экземпляров класса для двух студентов.
 studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male', '5', 'mts', 'python')
-studentOne.__print_course()
+studentTwo = Student('Max', 'Pain', '02.02.1990', 'male', '1', 'radio', 'cloud')
+
+# Функция вывода всех данных о студенте.
+def all_attrs(student_number):
+    attrs = vars(student_number)
+    print(', '.join("%s: %s" % item for item in attrs.items())) 
+
+all_attrs(studentOne)
+all_attrs(studentTwo)
