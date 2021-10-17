@@ -40,27 +40,6 @@ class Student:
         self.grade = grade
         self.speciality = speciality
         self.course = course
-    
-    def print_name(self):
-        print(self.name)
-    
-    def print_sname(self):
-        print(self.sname)
-    
-    def print_dob(self):
-        print(self.dob)
-    
-    def print_gender(self):
-        print(self.gender)
-
-    def print_grade(self):
-        print(self.grade)
-
-    def print_speciality(self):
-        print(self.speciality)
-
-    def print_course(self):
-        print(self.course)
 
     # Функция вывода всех данных о студенте.
     def all_attrs(student_number):
@@ -70,6 +49,7 @@ class Student:
 # Создание двух экземпляров класса для двух студентов.
 studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male', 5, 'mts', 'python')
 studentTwo = Student('Max', 'Pain', '02.02.1990', 'male', 1, 'radio', 'cloud')
+
 
 studentOne.all_attrs()
 studentTwo.all_attrs()
