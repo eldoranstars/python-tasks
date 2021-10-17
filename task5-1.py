@@ -24,36 +24,39 @@
 Реализуйте все необходимые свойства и атрибуты студента, выполнив при этом все необходимые проверки. В случае получения
 невалидных данных необходимо возбуждать исключение ValueError(или можете создать свое собственное)."""
 
-from settings import access
-
 #https://www.w3schools.com/python/python_classes.asp
+#https://habr.com/ru/post/444338/
 
-if access == "ro":
-    class Student:
-        def __init__(self, name, sname, dob, gender):
-            self.name = name
-            self.sname = sname
-            self.dob = dob
-            self.gender = gender
+class Student:
+    def __init__(self, name, sname, dob, gender, grade, speciality, course ):
+        self.name = name
+        self.sname = sname
+        self.dob = dob
+        self.gender = gender
+        self.grade = grade
+        self.speciality = speciality
+        self.course = course
 
-elif access == "rw":
-    class Student:
-        def __init__(self, name, sname, dob, gender, grade, speciality, course ):
-            self.name = name
-            self.sname = sname
-            self.dob = dob
-            self.gender = gender
-            self.grade = grade
-            self.speciality = speciality
-            self.course = course
-else:
-    print('wrong input! try "ro" or "rw"')
+    def print_name(self):
+        print(self.name)
+    
+    def print_sname(self):
+        print(self.sname)
+    
+    def print_dob(self):
+        print(self.dob)
+    
+    def print_gender(self):
+        print(self.gender)
 
-if access == "ro":
-    studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male')
-    attrs = vars(studentOne)
-    print(', '.join("%s: %s" % item for item in attrs.items()))
-else:
-    studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male', '5', 'mts', 'python')
-    attrs = vars(studentOne)
-    print(', '.join("%s: %s" % item for item in attrs.items()))
+    def __print_grade(self):
+        print(self.grade)
+
+    def __print_speciality(self):
+        print(self.speciality)
+
+    def __print_course(self):
+        print(self.course)
+
+studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male', '5', 'mts', 'python')
+studentOne.__print_course()
