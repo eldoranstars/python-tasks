@@ -24,9 +24,11 @@
 Реализуйте все необходимые свойства и атрибуты студента, выполнив при этом все необходимые проверки. В случае получения
 невалидных данных необходимо возбуждать исключение ValueError(или можете создать свое собственное)."""
 
-#https://www.w3schools.com/python/python_classes.asp
-#https://habr.com/ru/post/444338/
-#https://pythonworld.ru/osnovy/inkapsulyaciya-nasledovanie-polimorfizm.html
+# https://www.w3schools.com/python/python_classes.asp
+# https://habr.com/ru/post/444338/
+# https://pythonworld.ru/osnovy/inkapsulyaciya-nasledovanie-polimorfizm.html
+# https://pythonguide.readthedocs.io/en/latest/python/moreex.html#input-validation
+# https://pythonguide.readthedocs.io/en/latest/python/moreex.html#generalized-validation
 
 # Класс Student с приватными и публичными атрибутами.
 class Student:
@@ -38,7 +40,7 @@ class Student:
         self.grade = grade
         self.speciality = speciality
         self.course = course
-
+    
     def print_name(self):
         print(self.name)
     
@@ -61,8 +63,8 @@ class Student:
         print(self.course)
 
 # Создание двух экземпляров класса для двух студентов.
-studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male', '5', 'mts', 'python')
-studentTwo = Student('Max', 'Pain', '02.02.1990', 'male', '1', 'radio', 'cloud')
+studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male', 5, 'mts', 'python')
+studentTwo = Student('Max', 'Pain', '02.02.1990', 'male', 1, 'radio', 'cloud')
 
 # Функция вывода всех данных о студенте.
 def all_attrs(student_number):
