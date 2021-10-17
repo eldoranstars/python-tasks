@@ -33,24 +33,24 @@
 # Класс Student с приватными и публичными атрибутами.
 class Student:
     def __init__(self, name, sname, dob, gender, grade, speciality, course ):
-        self.name = name
-        self.sname = sname
-        self.dob = dob
-        self.gender = gender
+        self.__name = name
+        self.__sname = sname
+        self.__dob = dob
+        self.__gender = gender
         self.grade = grade
         self.speciality = speciality
         self.course = course
     
-    def __print_name(self):
+    def print_name(self):
         print(self.name)
     
-    def __print_sname(self):
+    def print_sname(self):
         print(self.sname)
     
-    def __print_dob(self):
+    def print_dob(self):
         print(self.dob)
     
-    def __print_gender(self):
+    def print_gender(self):
         print(self.gender)
 
     def print_grade(self):
