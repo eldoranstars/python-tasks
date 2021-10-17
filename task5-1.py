@@ -41,25 +41,25 @@ class Student:
         self.speciality = speciality
         self.course = course
     
-    def print_name(self):
+    def __print_name(self):
         print(self.name)
     
-    def print_sname(self):
+    def __print_sname(self):
         print(self.sname)
     
-    def print_dob(self):
+    def __print_dob(self):
         print(self.dob)
     
-    def print_gender(self):
+    def __print_gender(self):
         print(self.gender)
 
-    def __print_grade(self):
+    def print_grade(self):
         print(self.grade)
 
-    def __print_speciality(self):
+    def print_speciality(self):
         print(self.speciality)
 
-    def __print_course(self):
+    def print_course(self):
         print(self.course)
 
     # Функция вывода всех данных о студенте.
@@ -72,3 +72,4 @@ studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male', 5, 'mts', 'p
 studentTwo = Student('Max', 'Pain', '02.02.1990', 'male', 1, 'radio', 'cloud')
 
 studentOne.all_attrs()
+studentTwo.all_attrs()
