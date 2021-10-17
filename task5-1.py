@@ -62,14 +62,13 @@ class Student:
     def __print_course(self):
         print(self.course)
 
+    # Функция вывода всех данных о студенте.
+    def all_attrs(student_number):
+        attrs = vars(student_number)
+        print(', '.join("%s: %s" % item for item in attrs.items())) 
+
 # Создание двух экземпляров класса для двух студентов.
 studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male', 5, 'mts', 'python')
 studentTwo = Student('Max', 'Pain', '02.02.1990', 'male', 1, 'radio', 'cloud')
 
-# Функция вывода всех данных о студенте.
-def all_attrs(student_number):
-    attrs = vars(student_number)
-    print(', '.join("%s: %s" % item for item in attrs.items())) 
-
-all_attrs(studentOne)
-all_attrs(studentTwo)
+studentOne.all_attrs()
