@@ -24,16 +24,36 @@
 Реализуйте все необходимые свойства и атрибуты студента, выполнив при этом все необходимые проверки. В случае получения
 невалидных данных необходимо возбуждать исключение ValueError(или можете создать свое собственное)."""
 
+from settings import access
+
 #https://www.w3schools.com/python/python_classes.asp
 
-class Student:
-  def __init__(self, name, sname, dob, gender, grade, speciality, course ):
-    self.name = name
-    self.sname = sname
-    self.dob = dob
-    self.gender = gender
-    self.grade = grade
-    self.speciality = speciality
-    self.course = course
+if access == "ro":
+    class Student:
+        def __init__(self, name, sname, dob, gender):
+            self.name = name
+            self.sname = sname
+            self.dob = dob
+            self.gender = gender
 
-studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male', '5', 'mts', 'python')
+elif access == "rw":
+    class Student:
+        def __init__(self, name, sname, dob, gender, grade, speciality, course ):
+            self.name = name
+            self.sname = sname
+            self.dob = dob
+            self.gender = gender
+            self.grade = grade
+            self.speciality = speciality
+            self.course = course
+else:
+    print('wrong input! try "ro" or "rw"')
+
+if access == "ro":
+    studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male')
+    attrs = vars(studentOne)
+    print(', '.join("%s: %s" % item for item in attrs.items()))
+else:
+    studentOne = Student('Alex', 'Chistopolskiy', '01.01.1990', 'male', '5', 'mts', 'python')
+    attrs = vars(studentOne)
+    print(', '.join("%s: %s" % item for item in attrs.items()))

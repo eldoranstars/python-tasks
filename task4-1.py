@@ -50,5 +50,7 @@ class monitor(log_class):
 
 if output == "json":
     print(monitor().json_func())
-else:
+elif output == "txt":
     print(monitor().txt_func())
+else:
+    print('wrong input! try "json" or "txt"')
