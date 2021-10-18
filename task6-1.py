@@ -49,7 +49,16 @@ with open('students.dat') as f:
         StID = line.split(':::')
         ExtendedStudentID = ExtendedStudent(StID[0], StID[1], StID[2], StID[3], StID[4], StID[5], StID[6])
         ExtendedStudentID.all_ext_attrs()
-        
-        #ext = open('ext_students.dat', 'w')
-        #ext.write(str(ExtendedStudentID.all_ext_attrs()) + '\n')
-        #ext.close()
+        ext = open('ext_students.dat', 'a')
+        ext.write(
+        ExtendedStudentID._Student__name + ':::' +\
+        ExtendedStudentID._Student__sname + ':::' +\
+        ExtendedStudentID._Student__dob + ':::' +\
+        ExtendedStudentID._Student__gender + ':::' +\
+        ExtendedStudentID.grade + ':::' +\
+        ExtendedStudentID.speciality + ':::' +\
+        ExtendedStudentID.course + ':::' +\
+        ExtendedStudentID.login() + ':::' +\
+        ExtendedStudentID.password() + '\n'
+        )
+        ext.close()
