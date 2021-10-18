@@ -34,7 +34,7 @@
 import time
 # Класс Student с приватными и публичными атрибутами.
 class Student:
-    def __init__(self, name, sname, dob, gender, grade, speciality, course ):
+    def __init__(self, name, sname, dob, gender, grade, speciality, course):
         self.__name = name
         self.__sname = sname
         self.__dob = dob
