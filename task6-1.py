@@ -8,11 +8,6 @@
 # и не более 9 символов в разном регистре или цифр. Тут вам поможет модуль random и модуль string.
 # И наконец скрипт записывает получившиеся данные по студентам в файл ext_students.dat в произвольном(на ваш выбор) формате.
 
-# https://www.vipinajayakumar.com/parsing-text-with-python/
-
-my_string = 'Ivan:::Ivanov:::1980-11-11:::M:::1:::Developer:::2'
-StID = my_string.split(':::')
-
 class Student():
     def __init__(self, name, sname, dob, gender, grade, speciality, course):
         self.__name = name
@@ -29,5 +24,16 @@ class Student():
         #print(', '.join("%s: %s" % item for item in attrs.items())) 
         print(st_num.__name, st_num.__sname, st_num.__dob, st_num.__gender, st_num.grade, st_num.speciality, st_num.course)
 
-ExtendedStudent = Student(StID[0], StID[1], StID[2], StID[3], StID[4], StID[5], StID[6])
-ExtendedStudent.all_attrs()
+# https://www.vipinajayakumar.com/parsing-text-with-python/
+# https://www.pythontutorial.net/python-basics/python-read-text-file/
+
+#my_string = 'Ivan:::Ivanov:::1980-11-11:::M:::1:::Developer:::2'
+#StID = my_string.split(':::')
+#ExtendedStudent = Student(StID[0], StID[1], StID[2], StID[3], StID[4], StID[5], StID[6])
+#ExtendedStudent.all_attrs()
+
+with open('students.dat') as f:
+    for line in f:
+        StID = line.split(':::')
+        ExtendedStudent = Student(StID[0], StID[1], StID[2], StID[3], StID[4], StID[5], StID[6])
+        ExtendedStudent.all_attrs()
